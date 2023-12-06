@@ -1,4 +1,3 @@
-//Validando si la página se esta desplegando desde producción o desarrollo
 var url=window.ubication.href;
 var swLocation='/twittor/sw.js'
 
@@ -9,8 +8,6 @@ if (navigator.serviceWorker){
     navigator.serviceWorker.register(swLocation);
 }
 
-// Referencias de jQuery
-
 var titulo      = $('#titulo');
 var nuevoBtn    = $('#nuevo-btn');
 var salirBtn    = $('#salir-btn');
@@ -18,22 +15,13 @@ var cancelarBtn = $('#cancel-btn');
 var postBtn     = $('#post-btn');
 var avatarSel   = $('#seleccion');
 var timeline    = $('#timeline');
-
 var modal       = $('#modal');
 var modalAvatar = $('#modal-avatar');
 var avatarBtns  = $('.seleccion-avatar');
 var txtMensaje  = $('#txtMensaje');
-
-// El usuario, contiene el ID del héroe seleccionado
 var usuario;
 
-
-
-
-// ===== Codigo de la aplicación
-
 function crearMensajeHTML(mensaje, personaje) {
-
     var content =`
     <li class="animated fadeIn fast">
         <div class="avatar">
@@ -56,9 +44,6 @@ function crearMensajeHTML(mensaje, personaje) {
 
 }
 
-
-
-// Globals
 function logIn( ingreso ) {
 
     if ( ingreso ) {
@@ -79,8 +64,6 @@ function logIn( ingreso ) {
 
 }
 
-
-// Seleccion de personaje
 avatarBtns.on('click', function() {
 
     usuario = $(this).data('user');
@@ -91,14 +74,12 @@ avatarBtns.on('click', function() {
 
 });
 
-// Boton de salir
 salirBtn.on('click', function() {
 
     logIn(false);
 
 });
 
-// Boton de nuevo mensaje
 nuevoBtn.on('click', function() {
 
     modal.removeClass('oculto');
@@ -109,7 +90,6 @@ nuevoBtn.on('click', function() {
 
 });
 
-// Boton de cancelar mensaje
 cancelarBtn.on('click', function() {
    modal.animate({ 
        marginTop: '+=1000px',
@@ -120,7 +100,6 @@ cancelarBtn.on('click', function() {
     });
 });
 
-// Boton de enviar mensaje
 postBtn.on('click', function() {
 
     var mensaje = txtMensaje.val();

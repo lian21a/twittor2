@@ -18,7 +18,6 @@ const APP_SHELL=[
 const APP_SHELL_INMUTABLE=[
     'https://fonts.googleapis.com/css?family=Quicksand:300,400',
     'https://fonts.googleapis.com/css?family=Lato:400,300',
-
     'css/animate.css',
     'js/libs/jquery.js',
     'css/all.css'
@@ -34,7 +33,6 @@ self.addEventListener('install', e=>{
     });
 e.waitUntil(Promise.all([cacheStatic,cacheInmutable]));
 });
-
 self.addEventListener('activate', e=>{
     const respuesta=caches.keys().then(keys=>{
         keys.forEach(keys=>{
@@ -45,9 +43,6 @@ self.addEventListener('activate', e=>{
     });
     e.waitUntil(respuesta);
 });
-
-
-//CACHE WITH NETWOKR FALLBACK
 self.addEventListener('fetch', e=>{
      if(!e.request.url.includes('kaspersky')){
         const respuesta=caches.match(e.request).then(res=>{
